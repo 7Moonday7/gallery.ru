@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/welcome', function () {
-//    return view('welcome');
-//});
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
-    return view('index');
-})->name('app.index');
+    return view('main');
+})->name('app.main');
 
 Route::get('paintings', [PaintingController::class, 'index'])->name('painting.index');
 
-//Auth::routes();
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
