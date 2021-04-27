@@ -8,6 +8,6 @@
 <div id="app">
     <example-component></example-component>
 </div>
-<script src="public/js/app.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>

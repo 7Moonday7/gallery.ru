@@ -7,7 +7,7 @@
 
                     <div class="card-body">
                         I'm an example component.
-                        оно работает
+                        Запустись уже.
                     </div>
                 </div>
             </div>
