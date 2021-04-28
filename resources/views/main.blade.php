@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
-    <title>Картинная галлерея</title>
+    <title>Картинная галерея</title>
     <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
 </head>
 <body>
@@ -9,6 +9,6 @@
     <test></test>
     <example-component></example-component>
 </div>
-<script src="./js/app.js"></script>
+<script src="public/js/app.js"></script>
 </body>
 </html>
