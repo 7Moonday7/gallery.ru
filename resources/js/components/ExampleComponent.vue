@@ -7,7 +7,6 @@
 
                     <div class="card-body">
                         I'm an example component.
-                        Запустись уже.
                     </div>
                 </div>
             </div>
