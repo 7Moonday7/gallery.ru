@@ -3,8 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
-.env*
-.idea
+.env
+.env.testing
+/.idea
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

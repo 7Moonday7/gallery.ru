@@ -6,7 +6,6 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Zilla+Slab'>
     <link rel='stylesheet' href='{{asset('public/css/muilessium-0.1.26.min.css')}}'>
     <style>
-
         html {
             font-family: 'Zilla Slab', serif;
         }
