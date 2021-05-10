@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\FileHelper;
 use App\Http\Requests\PaintingCreateRequest;
 use App\Models\Painting;
 use App\Services\Painting\PaintingService;
 use App\Transformers\PaintingTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Контроллер картин в галерее
@@ -24,12 +26,20 @@ class PaintingController extends ApiController
      * @param PaintingService $service
      * @return JsonResponse
      */
-    public function store(PaintingCreateRequest $request, PaintingService $service)
+    public function store(PaintingCreateRequest $request, PaintingService $service): JsonResponse
     {
         $painting                = new Painting();
+
+        $file = FileHelper::FileUpload($request->file('preview'), Painting::FILE_DIR);
+
+        if (!$file) {
+            $this->responseError('Загрузка файла не удалась. Попробуйте ещё раз.', 500);
+        }
+
+        $painting->preview       = $file;
         $painting->title         = $request->get('title');
         $painting->description   = $request->get('description');
-        $painting->author        = $request->get('author');
+        $painting->author_id        = $request->get('author');
         $painting->creation_date = $request->get('creation_date');
 
         if ($service->store($painting)) {
@@ -61,12 +71,21 @@ class PaintingController extends ApiController
      */
     public function update(Painting $painting, PaintingCreateRequest $request, PaintingService $service): JsonResponse
     {
+        $file = FileHelper::FileUpload($request->file('preview'), Painting::FILE_DIR);
+
+        if (!$file) {
+            $this->responseError('Загрузка файла не удалась. Попробуйте ещё раз.', 500);
+        }
+        $old_file = $painting->preview;
+
+        $painting->preview       = $file;
         $painting->title         = $request->get('title');
         $painting->description   = $request->get('description');
-        $painting->author        = $request->get('author');
+        $painting->author_id     = $request->get('author');
         $painting->creation_date = $request->get('creation_date');
 
         if ($service->update($painting)) {
+            Storage::delete(Painting::FILE_DIR . $old_file);
             return $this->responseSuccess(PaintingTransformer::oneToArray($painting), 200);
         }
 
