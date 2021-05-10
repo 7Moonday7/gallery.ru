@@ -1,0 +1,94 @@
+html {
+    font-family: 'Zilla Slab', serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.fake-cursor:before,
+.fake-cursor:after {
+    content: '';
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px dotted #000;
+    transform: translateX(-50%) translateY(1px);
+}
+
+.fake-cursor:before {
+    left: 25%;
+}
+
+.fake-cursor:after {
+    left: 75%;
+}
+
+.fake-cursor.-active:before,
+.fake-cursor.-active:after {
+    background: #FFF;
+    border: solid 3px #000;
+}
+
+.vr-area {
+    height: 120vh;
+    width: 100%;
+    padding: 1rem;
+    border: 10px solid #000;
+
+    background-image:
+        linear-gradient(0deg,
+        #FCFCFC 0%,
+        #FCFCFC 5%,
+        transparent 5%,
+        transparent 95%,
+        #FCFCFC 95%,
+        #FCFCFC 100%),
+        linear-gradient(90deg,
+        #FCFCFC 0%,
+        #FCFCFC 5%,
+        transparent 5%,
+        transparent 95%,
+        #FCFCFC 95%,
+        #FCFCFC 100%);
+    background-position: center center;
+    background-size: 40px 40px;
+}
+
+.vr-area.-center {
+    background-color: #FFC691;
+}
+
+.vr-area.-left {
+    background-color: #B4EDDA;
+}
+
+.vr-area.-right {
+    background-color: #FF7A7C;
+}
+
+.vr-area.-left,
+.vr-area.-right {
+    width: 50%;
+}
+
+.mui-button.-separated + .mui-button.-separated {
+    margin-left: 2rem;
+}
+
+/* --- */
+
+.-f-blue-3-bg.-focused {
+    background: #2967A0 !important;
+}
+
+.-f-orange-3-bg.-focused {
+    background: #F86624 !important;
+}
+
+.-f-red-3-bg.-focused {
+    background: #E2181C !important;
+}
