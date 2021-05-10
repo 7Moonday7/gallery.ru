@@ -25,7 +25,7 @@ class PaintingTransformer
             'id'    => $painting->id,
             'title' => $painting->title,
             'description' => $painting->description,
-            'author' => $painting->author,
+            'author' => $painting->author->name,
             'creation_date' => $painting->creation_date,
             'created_at' => $painting->created_at,
             'updated_at' => $painting->updated_at

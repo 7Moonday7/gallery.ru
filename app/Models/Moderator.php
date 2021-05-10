@@ -2,14 +2,29 @@
 
 namespace App\Models;
 
+use App\Http\Requests\ModeratorCreateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\JsonResponse;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+/**
+ * Класс модераторов
+ *
+ * @property int $id
+ * @property string $login
+ * @property string $email
+ * @property string $password
+ *
+ * Class Moderator
+ * @package App\Models
+ */
+
+class Moderator extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'login',
         'email',
         'password',
     ];
@@ -29,7 +44,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**

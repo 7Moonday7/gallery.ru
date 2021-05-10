@@ -39,7 +39,7 @@ class PaintingController extends ApiController
         $painting->preview       = $file;
         $painting->title         = $request->get('title');
         $painting->description   = $request->get('description');
-        $painting->author_id        = $request->get('author');
+        $painting->author_id     = $request->get('author_id');
         $painting->creation_date = $request->get('creation_date');
 
         if ($service->store($painting)) {

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PaintingController;
+use App\Http\Controllers\AuthorController;
+use \App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/auth', [UserController::class, 'auth'])->name('auth');
+Route::post('/registration', [UserController::class, 'registration'])->name('registration');
+Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 Route::prefix('painting')->name('painting.')->group(function () {
     Route::get('', [PaintingController::class, 'getAll'])->name('getAll');
     Route::get('/{painting}', [PaintingController::class, 'getOne'])->name('getOne');
-    Route::post('store', [PaintingController::class, 'store'])->name('store');
-    Route::patch('{painting}/update', [PaintingController::class, 'update'])->name('update');
-    Route::delete('{painting}/delete', [PaintingController::class, 'delete'])->name('delete');
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('painting')->name('painting.')->group(function () {
+        Route::post('store', [PaintingController::class, 'store'])->name('store');
+        Route::patch('{painting}/update', [PaintingController::class, 'update'])->name('update');
+        Route::delete('{painting}/delete', [PaintingController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('author')->name('author.')->group(function () {
+        Route::post('store', [AuthorController::class, 'store'])->name('store');
+        Route::patch('{author}/update', [AuthorController::class, 'update'])->name('update');
+    });
+});
+

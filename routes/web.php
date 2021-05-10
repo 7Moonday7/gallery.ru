@@ -24,6 +24,4 @@ Route::get('/', function () {
 
 Route::get('paintings', [PaintingController::class, 'index'])->name('painting.index');
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

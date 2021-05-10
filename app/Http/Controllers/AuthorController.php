@@ -39,18 +39,6 @@ class AuthorController extends ApiController
     }
 
     /**
-     * Получить всех авторов
-     *
-     * @return JsonResponse
-     */
-    public function getAll(): JsonResponse
-    {
-        $authors = Author::query()->get();
-
-        return $this->responseSuccess(AuthorTransformer::manyToArray($authors), 200);
-    }
-
-    /**
      * Метод обновления автора
      *
      * @param Author $author
@@ -69,16 +57,5 @@ class AuthorController extends ApiController
         }
 
         return $this->responseError('Не удалось отредактировать . Попробуйте позже', 500);
-    }
-
-    /**
-     * Метод получения одного художника
-     *
-     * @param Author $author
-     * @return JsonResponse
-     */
-    public function getOne(Author $author): JsonResponse
-    {
-        return $this->responseSuccess(AuthorTransformer::oneToArray($author), 200);
     }
 }

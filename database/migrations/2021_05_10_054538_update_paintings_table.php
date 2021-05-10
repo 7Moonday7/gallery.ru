@@ -16,6 +16,7 @@ class UpdatePaintingsTable extends Migration
         Schema::table('paintings', function (Blueprint $table) {
             $table->dropColumn('author');
             $table->unsignedBigInteger('author_id')->nullable();
+            $table->string('preview');
 
             $table->foreign('author_id')
                 ->references('id')->on('author')
@@ -33,6 +34,7 @@ class UpdatePaintingsTable extends Migration
         Schema::table('paintings', function (Blueprint $table) {
             $table->dropForeign(['author_id']);
             $table->dropColumn('author_id');
+            $table->dropColumn('preview');
             $table->string('author');
         });
     }

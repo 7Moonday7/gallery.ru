@@ -27,7 +27,7 @@ class PaintingCreateRequest extends FormRequest
         return [
             'title'         => 'required|string',
             'description'   => 'required|string',
-            'author'        => 'required|string',
+            'author_id'     => 'required|numeric|exists:authors,id',
             'creation_date' => ['required', 'string'],
         ];
     }
