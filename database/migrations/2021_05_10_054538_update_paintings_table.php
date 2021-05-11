@@ -35,7 +35,6 @@ class UpdatePaintingsTable extends Migration
             $table->dropForeign(['author_id']);
             $table->dropColumn('author_id');
             $table->dropColumn('preview');
-            $table->string('author');
         });
     }
 }
