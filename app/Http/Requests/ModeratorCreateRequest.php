@@ -24,7 +24,8 @@ class ModeratorCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'login'         => 'required|string',
+            'login'         => 'required|string|unique:moderators',
+            'email'         => 'required|email:rfc,dns|unique:moderators',
             'password'      => 'required|string',
         ];
     }
@@ -39,8 +40,12 @@ class ModeratorCreateRequest extends FormRequest
         return [
             'login.required'         => 'Поле login должно быть заполнено',
             'login.string'           => 'Поле login должно быть строкой',
+            'login.unique'           => 'Пользователь с таким login уже существует',
             'password.required'      => 'Поле password должно быть заполнено',
             'password.string'        => 'Поле password должно быть строкой',
+            'email.required'         => 'Поле email должно быть заполнено',
+            'email.email'            => 'Поле email должно быть cуществующей почтой',
+            'email.unique'           => 'Такой email уже используется',
         ];
     }
 }
