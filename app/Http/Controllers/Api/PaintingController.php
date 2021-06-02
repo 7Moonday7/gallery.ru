@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Helper\FileHelper;
 use App\Http\Requests\PaintingCreateRequest;
@@ -28,7 +28,7 @@ class PaintingController extends ApiController
      */
     public function store(PaintingCreateRequest $request, PaintingService $service): JsonResponse
     {
-        $painting                = new Painting();
+        $painting = new Painting();
 
         $file = FileHelper::FileUpload($request->file('preview'), Painting::FILE_DIR);
 

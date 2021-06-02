@@ -25,6 +25,7 @@ class PaintingCreateRequest extends FormRequest
     public function rules()
     {
         return [
+            'preview'       => 'required',
             'title'         => 'required|string',
             'description'   => 'required|string',
             'author_id'     => 'required|numeric|exists:authors,id',
@@ -40,6 +41,7 @@ class PaintingCreateRequest extends FormRequest
     public function messages()
     {
         return [
+            'preview.required'       => 'Поле preview должно быть заполнено',
             'title.required'         => 'Поле title должно быть заполнено',
             'title.string'           => 'Поле title должно быть строкой',
             'description.required'   => 'Поле description должно быть заполнено',

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\ModeratorCreateRequest;
+use App\Http\Requests\RegistrationCreateRequest;
+use App\Http\Requests\AuthCreateRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Moderator;
@@ -22,10 +23,10 @@ class UserController extends ApiController
     /**
      * Метод авторизации
      *
-     * @param ModeratorCreateRequest $request
+     * @param AuthCreateRequest $request
      * @return JsonResponse
      */
-    public function auth(ModeratorCreateRequest $request) : JsonResponse
+    public function auth(AuthCreateRequest  $request) : JsonResponse
     {
         /** @var Moderator $user */
         $user = Moderator::query()
@@ -41,11 +42,11 @@ class UserController extends ApiController
     /**
      * Метод регистрации
      *
-     * @param ModeratorCreateRequest $request
+     * @param RegistrationCreateRequest $request
      * @return JsonResponse
      */
 
-    public function registration(ModeratorCreateRequest $request) : JsonResponse
+    public function registration(RegistrationCreateRequest $request) : JsonResponse
     {
         $user = new Moderator();
         $user->login      = $request->get('login');

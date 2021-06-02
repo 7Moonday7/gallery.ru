@@ -6,9 +6,9 @@ namespace App\Transformers;
 use App\Models\Moderator;
 
 /**
- * Преобразовывает модель Author в массив
+ * Преобразовывает модель Moderator в массив
  *
- * Class AuthorTransformer
+ * Class ModeratorTransformer
  * @package App\Transformers
  */
 class ModeratorTransformer

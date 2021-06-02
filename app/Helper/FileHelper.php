@@ -15,7 +15,7 @@ class FileHelper
      */
     public static function FileUpload(UploadedFile $file, string $dir)
     {
-        if ($fileName = $file->store($dir)) {
+        if ($fileName = $file->store('/public' . $dir)) {
             $array = explode('/', $fileName);
             return $fileName = array_pop($array);
         }

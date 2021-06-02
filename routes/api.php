@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\PaintingController;
-use App\Http\Controllers\AuthorController;
-use \App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\PaintingController;
+use App\Http\Controllers\Api\AuthorController;
+use \App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
